@@ -15,18 +15,6 @@ const fileDb = {
         }
     },
 
-    async getOneMessage(datetime: string) {
-        try {
-            if (!existsSync(`${path}/${datetime}.txt`)) return null;
-
-            const message: Buffer<ArrayBufferLike> = await fs.readFile(`${path}/${datetime}.txt`);
-
-            return JSON.parse(message.toString());
-        } catch (e) {
-            console.error(e);
-        }
-    },
-
     async getMessages() {
         try {
             const files: string[] = await fs.readdir(path);

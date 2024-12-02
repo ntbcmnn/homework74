@@ -17,16 +17,4 @@ messagesRouter.post('/', async (req, res) => {
     res.send(savedMessage);
 });
 
-messagesRouter.get('/:datetime', async (req, res) => {
-    const datetime: string = req.params.datetime;
-    const message: IMessage = await fileDb.getOneMessage(datetime);
-
-    if (!message) {
-        res.send('Message not found');
-        return;
-    }
-
-    res.send(message);
-});
-
 export default messagesRouter;
